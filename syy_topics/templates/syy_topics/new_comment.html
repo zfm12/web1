@@ -1,0 +1,15 @@
+{% extends "syy_topics/base.html" %}
+
+{% block content %}
+  <p><a href="{% url 'syy_topics:entry' entry.id %}">{{ entry }}</a></p>
+    
+  <p>增加评论:</p>
+  <form action="{% url 'syy_topics:new_comment' entry.id %}" method='post'>
+    {% csrf_token %}
+  {% autoescape off %}
+    {{ form.as_p }}
+  {% endautoescape %}
+    <button name='submit'>增加</button>
+  </form>
+
+{% endblock content %}

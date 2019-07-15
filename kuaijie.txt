@@ -1,0 +1,56 @@
+cd C:\SYY
+syy_env\Scripts\activate
+python manage.py runserver
+
+python manage.py makemigrations 
+python manage.py migrate
+
+Django版本 2.2.2
+[uwsgi]
+chdir        =/data/wwwroot/wtp_02
+module=wtp_02.wsgi:application
+master       =true
+processes=4
+threads=2
+pidfile=uwsgi.pid
+
+1.entries = topic.syy_entry_set.order_by('-date_added')在shell下会参生什么
+<QuerySet [<SYY_Entry: 测试旧功能是否可用...>, <SYY_Entry: 测试测试...>, <SYY_Entry: 测试...>, <SYY_Entry: 测试...>,
+ <SYY_Entry: zfm创建...>, <SYY_Entry: 这是zfm创建的.zhangfm为什么也可以编辑了...>, <SYY_Entry: 上一条那货果然是默认的...>,
+ <SYY_Entry: 测试作者这货是不是默认的...>, <SYY_Entry: 富文本编辑器...>, <SYY_Entry: 时间会因为修改而变化吗...>, 
+<SYY_Entry: 终于没有bug了，我要死掉了...>, <SYY_Entry: 这一天天的...>, <SYY_Entry: 测试册数测试测试...>]>
+2.>>> entries[1]
+<SYY_Entry: 测试测试...>
+>>> entries[0]
+<SYY_Entry: 测试旧功能是否可用...>
+>>> comments=entries[0].syy_comment_set.order_by('-created_time')
+>>> print(comments)
+<QuerySet [<SYY_Comment: 2>, <SYY_Comment: 1>, <SYY_Comment: 这文章写得真不错>, <SYY_Comment: 这篇文章写得真尼玛好>]>
+>>> a=len(comments)
+>>> print(a)
+4
+>>> for comment in coments:
+... print(comment)
+  File "<console>", line 2
+    print(comment)
+        ^
+IndentationError: expected an indented block
+>>>  for comment in coments:
+  File "<console>", line 1
+    for comment in coments:
+    ^
+IndentationError: unexpected indent
+>>> for comment in coments:
+...    print(comment)
+...
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'coments' is not defined
+>>> for comment in comments
+  File "<console>", line 1
+    for comment in comments
+                          ^
+SyntaxError: invalid syntax
+>>> for comment in comments:
+...    print(comment)
+...

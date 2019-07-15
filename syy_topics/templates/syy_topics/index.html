@@ -1,0 +1,16 @@
+{% extends "syy_topics/base.html" %}
+
+{% block header %}
+  <div class='jumbotron'>
+      <h1>与别人一起分享你的经验.</h1>        
+  </div>
+{% endblock %}
+
+{% block content %}
+  <h2>
+    <a href="{% url 'users:register' %}">注册一个账户</a> 
+  </h2>
+  <h2>
+    一个人拥有此生此世是不够的，他还应该拥有一个诗意的世界——《万寿寺》。	
+  </h2>
+{% endblock %}

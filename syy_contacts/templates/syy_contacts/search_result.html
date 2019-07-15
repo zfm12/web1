@@ -1,0 +1,26 @@
+{% extends 'syy_topics/base.html' %}
+{% block content %}
+	
+	<body bgcolor = "#F0F8FF">
+	<table width="398" height="150" border="1" align="center">
+	<tr>
+	<th>姓名</th>
+	<th>岗位</th>
+	<th>手机</th>
+	<th>电话</th>
+	</tr>
+	{% for i in query_list %}
+	  <tr>
+		<td width="200">{{i.name}}</td>
+		<td width="200">{{i.position}}</td>
+		<td width="200">{{i.telephone}}</td>
+		<td width="200">{{i.Landline}}</td>   
+	  </tr>
+	{% empty %}
+	  <script>
+		alert('没有查询到结果')
+	  </script>
+	{% endfor %}
+	</table>
+	</body>	
+{% endblock content %}

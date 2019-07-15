@@ -1,0 +1,15 @@
+{% extends "syy_topics/base.html" %}
+{% load static %}
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+{% block content %}
+
+  <p><a href="{% url 'syy_topics:topic' topic.id %}">{{ topic }}</a></p>
+    
+  <p>增加答案:</p>
+  <form action="{% url 'syy_topics:new_entry' topic.id %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name='submit'>增加</button>
+  </form>
+    
+{% endblock content %}

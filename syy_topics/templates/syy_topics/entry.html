@@ -1,0 +1,44 @@
+{% extends 'syy_topics/base.html' %}
+
+{% block header %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2>
+          {{ entry.date_added|date:'M d, Y H:i' }}
+		  &nbsp;    
+		  <small>
+		  {{ entry.owner }}
+		  </small>
+		  &nbsp;
+        </h2>
+      </div>
+      <div class="panel-body">
+	    <h3>
+          {{ entry.text|linebreaks }}
+		</h3>
+		<hr/>
+		<p>
+		    <a href="{% url 'syy_topics:new_comment' entry.id %}">增加一条评论</a>
+		</p>
+		  {% for comment in comments %}
+		    <div class="panel-heading">
+              <h4>
+               {{ comment.content }}
+		       &nbsp;    
+		       <small>
+		       {{ comment.nicknam }}    
+			   &nbsp; 
+			   {{ comment.created_time|date:'M d, Y H:i' }}
+		       </small>
+              </h4>
+            </div> 		
+          {% empty %}
+		    <p>
+		      <font size="3" color="#BEBFC3">
+                 这还没有评论，你要做那个第一人吗？
+              </font>
+     		</p>	
+          {% endfor %}			  
+      </div>
+    </div>
+{% endblock header %}

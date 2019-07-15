@@ -1,0 +1,8 @@
+Django==2.2.2
+pip3 install django-bootstrap3==11.0.0
+pip3 install django-ckeditor==5.4.0
+pip3 install django-crispy-forms==1.7.2
+pip3 install django-js-asset==1.2.2
+pip3 install Pillow==6.0.0
+pip3 install pytz==2019.1
+pip3 install sqlparse==0.3.0
